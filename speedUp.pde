@@ -1,4 +1,5 @@
-public class speedUp extends Powerup{
+//**UNSED CODE**\\
+/*public class speedUp extends Powerup{
    String id;
    PImage symbol;
    public speedUp(){
@@ -9,4 +10,4 @@ public class speedUp extends Powerup{
    public String id(){
     return id; 
    }
-}
+}*/

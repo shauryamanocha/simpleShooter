@@ -1,4 +1,5 @@
-public class Powerup{
+//***UNUSED CODE***\\
+/*public class Powerup{
   PVector pos;
   int size = 50;
   int timeLeft = 1000;
@@ -50,4 +51,4 @@ public class Powerup{
      return false;
    }
   }
-}
+}*/
