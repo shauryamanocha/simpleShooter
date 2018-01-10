@@ -42,8 +42,8 @@ void draw() {
   }
 
   if (gameState == 1) {
-    if (frameCount%600 == 0) {
-      enemyDifficulty+=5;
+    if (spawnInterval%2400 == 0) {
+      enemyDifficulty+=2;
     }
     spawnInterval++;//keeps track of time since last enemy was spawned
     player.paused = false;//unpause player
@@ -56,7 +56,7 @@ void draw() {
     if (player.dead) {
       text("GAME OVER", width/2, height/2);//end screen
     }
-
+    textSize(20);
     textAlign(CENTER, CENTER);//menu text
     text("PRESS M FOR MENU", width-200, 100);
     text("POINTS:" + player.points, width-200, 50);

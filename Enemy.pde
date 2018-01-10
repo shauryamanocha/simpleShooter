@@ -21,14 +21,14 @@ public class Enemy {
 
   private void draw() {
     noStroke();
-    fill(255, 0, 0);
-    textAlign(CENTER,CENTER);
-    textSize(10);
-    
+    //fill(255, 0, 0);
+    //textAlign(CENTER,CENTER);
+    //textSize(15);
     //ellipse(pos.x, pos.y, size, size);
     imageMode(CENTER);
+    tint(health, 0, 0);
     image(img, pos.x, pos.y, size+health, size+health);//draw the image
-    text(health,pos.x,pos.y);
+    //text(health,pos.x,pos.y);
     if (paused) {
       tint(255, 100);//lower image opacity if paused
     } else {
@@ -93,6 +93,7 @@ public class Enemy {
       detectHit();
     }
     draw();
+
     for (int i = 0; i<bullets.size(); i++) {
       if (paused) {
         bullets.get(i).paused = true;//pause all bullets
