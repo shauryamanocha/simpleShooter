@@ -47,8 +47,8 @@ public class Menu {
     textSize(20);
     text("PRESS 1 TO INCREASE SPEED  CURRENT SPEED:" + speed, 40, 1*(height/menuItems)-30);//draws text at a height based off of number of menu items
     text("PRESS 2 TO INCREASE SHOOTING SPEED  CURRENT SHOOTING SPEED:" + shootSpeed, 40, 2*(height/menuItems)-30);
-    text("PRESS 3 TO UPGRADE SHOOT MODE (REDUCES DAMAGE):" + shootMode, 40, 3*(height/menuItems)-30);
-    text("PRESS 4 TO UPGRADE DAMAGE (REDUCES DAMAGE):" + damage, 40, 4*(height/menuItems)-30);
+    text("PRESS 3 TO UPGRADE SHOOT MODE (REDUCES DAMAGE) CURRENT MODE:" + shootMode, 40, 3*(height/menuItems)-30);
+    text("PRESS 4 TO UPGRADE DAMAGE CURRENT DAMAGE:" + damage, 40, 4*(height/menuItems)-30);
   }
 
   private void updatePlayer() {

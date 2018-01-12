@@ -5,6 +5,7 @@ int gameState = 0;
 int spawnInterval = 0;
 int enemyDifficulty = 0;
 boolean paused = false;
+PImage bg;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 void setup() {
   size(800, 800); 
@@ -14,11 +15,13 @@ void setup() {
   for (int i = 0; i < 5; i++) {
     enemies.add(new Enemy(i*80, player, enemyDifficulty));
   }
+  bg = loadImage("bg.jpg");
   //powerups.add(new speedUp());
 }//created all variables and objects
 
 void draw() {
-  background(0); 
+  background(0);
+  image(bg,width/2,height/2);
   if (gameState == 0) {//intro screen
     textSize(30);
     textAlign(CENTER, CENTER);
@@ -30,9 +33,12 @@ void draw() {
   } else {
     for (int i = 0; i<enemies.size(); i++) {//update enemies
       enemies.get(i).update();
+      if(enemies.get(i).explosion.running){
+       enemies.get(i).explode(); 
+      }
       player.detectHit(enemies.get(i));//check if player is hit by enemy bullet
-      if (enemies.get(i).dead) {
-        enemies.remove(i);
+      if (enemies.get(i).dead && enemies.get(i).explosion.done()) {
+        enemies.remove(i);//stop updating enemy
       }
     }
 
@@ -43,7 +49,7 @@ void draw() {
 
   if (gameState == 1) {
     if (spawnInterval%2400 == 0) {
-      enemyDifficulty+=2;
+      enemyDifficulty+=2;//increase enemy starting health
     }
     spawnInterval++;//keeps track of time since last enemy was spawned
     player.paused = false;//unpause player

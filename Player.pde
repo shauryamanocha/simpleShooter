@@ -7,7 +7,7 @@ public class Player {
   int controlMode = 0;
   int shootSpeed = 18;
   PImage image;
-  int points = 50;
+  int points = 25;
   int moveSpeed = 5;
   int shootMode = 0;
   float damage = 1;

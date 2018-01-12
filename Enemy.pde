@@ -9,6 +9,7 @@ public class Enemy {
   boolean paused = false;
   ArrayList<Bullet> bullets = new ArrayList<Bullet>();
   Player player;
+  Explosion explosion;
   public Enemy(int xPos, Player _player, int extraHealth) {
     pos = new PVector(xPos, size);
     vel = new PVector(0, 0);
@@ -16,6 +17,7 @@ public class Enemy {
     difficulty = 0;
     player = _player;
     health+=extraHealth;
+    explosion = new Explosion(pos, 2, 50);
   }//created all variables
 
 
@@ -26,7 +28,7 @@ public class Enemy {
     //textSize(15);
     //ellipse(pos.x, pos.y, size, size);
     imageMode(CENTER);
-    tint(health, 0, 0);
+    tint(10*health, 265-health, 0);
     image(img, pos.x, pos.y, size+health, size+health);//draw the image
     //text(health,pos.x,pos.y);
     if (paused) {
@@ -55,14 +57,16 @@ public class Enemy {
   }
   private void detectHit() {
     for (int i = 0; i<player.bullets.size(); i++) {//loop through all of the player's bullets
-      if (pos.dist(player.bullets.get(i).pos)<=size/2) {
-        size-=player.bullets.get(i).damage*2;//check for hit and lower size
+      if (pos.dist(player.bullets.get(i).pos)<=(size/2)+5) {
+        size-=player.bullets.get(i).damage/2;//check for hit and lower size
 
         if (health>1) {
-          health-=player.bullets.get(i).damage;//lower health if alive
-          dead = false;//kill self if health is too low
+          health-=player.bullets.get(i).damage/2;//lower health if alive
+          dead = false;
         } else {
-          dead = true;
+          explosion.update(pos, 2, 50);
+          explosion.running = true;
+          dead = true;//kill self if health is too low
           player.points++;//increase player points on hit
         }
         player.bullets.remove(i);
@@ -83,6 +87,13 @@ public class Enemy {
   public ArrayList bullets() {
     return bullets;
   }
+  public void explode() {
+    if (explosion.running) {
+      explosion.draw();
+    } else {
+      explosion.running = false;
+    }
+  }
   public void update() {
     if (!paused) {  //only done if not paused
       if (difficulty<29) {//increase difficulty to shoot faster
@@ -93,7 +104,6 @@ public class Enemy {
       detectHit();
     }
     draw();
-
     for (int i = 0; i<bullets.size(); i++) {
       if (paused) {
         bullets.get(i).paused = true;//pause all bullets
