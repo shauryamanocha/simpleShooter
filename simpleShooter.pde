@@ -21,7 +21,7 @@ void setup() {
 
 void draw() {
   background(0);
-  image(bg,width/2,height/2);
+  image(bg, width/2, height/2);
   if (gameState == 0) {//intro screen
     textSize(30);
     textAlign(CENTER, CENTER);
@@ -33,8 +33,8 @@ void draw() {
   } else {
     for (int i = 0; i<enemies.size(); i++) {//update enemies
       enemies.get(i).update();
-      if(enemies.get(i).explosion.running){
-       enemies.get(i).explode(); 
+      if (enemies.get(i).explosion.running) {
+        enemies.get(i).explode();
       }
       player.detectHit(enemies.get(i));//check if player is hit by enemy bullet
       if (enemies.get(i).dead && enemies.get(i).explosion.done()) {
@@ -60,7 +60,20 @@ void draw() {
       enemies.get(i).paused = false;
     }
     if (player.dead) {
+      text("PRESS 'R' TO RESTART", width/2, height/2+100);
       text("GAME OVER", width/2, height/2);//end screen
+      if (keyPressed&&key == 'r') {
+        menu.reset();
+        player = new Player(0);
+        for (int i = 0; i<enemies.size(); i++) {
+          enemies.remove(i);
+          println(i);
+        }
+        println(enemies.size());
+        for (int i = 0; i < 5; i++) {
+          //enemies.add(new Enemy(i*80, player, enemyDifficulty));
+        }
+      }
     }
     textSize(20);
     textAlign(CENTER, CENTER);//menu text

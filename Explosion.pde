@@ -35,9 +35,8 @@ public class Explosion {
     }
   }
   
-  public void update(PVector _pos, float _rate, int _siz){
+  public void update(PVector _pos){
     pos.set(_pos);
-    rate = _rate;
-    siz = _siz;
+
   }
 }

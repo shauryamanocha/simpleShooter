@@ -57,6 +57,13 @@ public class Menu {
     player.shootMode = shootMode-10;
     player.damage = damage;
   }
+  
+  public void reset(){
+   speed = 1;
+   shootSpeed = 1;
+   shootMode = 10;
+   damage = 1;
+  }
 
   public void update() {//call all menu functions
     draw();

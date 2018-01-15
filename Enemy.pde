@@ -64,7 +64,7 @@ public class Enemy {
           health-=player.bullets.get(i).damage/2;//lower health if alive
           dead = false;
         } else {
-          explosion.update(pos, 2, 50);
+          explosion.update(pos);
           explosion.running = true;
           dead = true;//kill self if health is too low
           player.points++;//increase player points on hit
