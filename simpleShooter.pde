@@ -1,3 +1,4 @@
+import ddf.minim.*;
 Enemy enemy;
 Player player;
 Menu menu;
@@ -6,18 +7,29 @@ int spawnInterval = 0;
 int enemyDifficulty = 0;
 boolean paused = false;
 PImage bg;
+Minim music;
+AudioPlayer musicPlayer;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 void setup() {
   size(800, 800); 
   frameRate(60);
   player = new Player(0);
   menu = new Menu(player);
+  music = new Minim(this);
+  musicPlayer = music.loadFile("music.mp3");
   for (int i = 0; i < 5; i++) {
     enemies.add(new Enemy(i*80, player, enemyDifficulty));
   }
   bg = loadImage("bg.jpg");
-  //powerups.add(new speedUp());
+  musicPlayer.loop();
 }//created all variables and objects
+
+void resetEnemies() {
+  enemies.clear();
+  for (int i = 0; i < 5; i++) {
+    enemies.add(new Enemy(i*80, player, enemyDifficulty));
+  }
+}
 
 void draw() {
   background(0);
@@ -65,14 +77,7 @@ void draw() {
       if (keyPressed&&key == 'r') {
         menu.reset();
         player = new Player(0);
-        for (int i = 0; i<enemies.size(); i++) {
-          enemies.remove(i);
-          println(i);
-        }
-        println(enemies.size());
-        for (int i = 0; i < 5; i++) {
-          //enemies.add(new Enemy(i*80, player, enemyDifficulty));
-        }
+        resetEnemies();
       }
     }
     textSize(20);

@@ -7,13 +7,13 @@ public class Player {
   int controlMode = 0;
   int shootSpeed = 18;
   PImage image;
-  int points = 25;
+  int points = 0;
   int moveSpeed = 5;
   int shootMode = 0;
   float damage = 1;
   boolean paused = false;
   public Player(int _controlMode) {
-    pos = new PVector(width/2, height);
+    pos = new PVector(random(width), height);
     vel = new PVector(0, 0);
     controlMode = _controlMode;
     image = loadImage("russia.png");
