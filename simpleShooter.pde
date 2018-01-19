@@ -1,8 +1,8 @@
 import ddf.minim.*;
 /*
 Shaurya Manocha
-simpleShooter v3.0
-January 15th - Game now has background music
+simpleShooter v1.0
+January 15th - Added background music
 */
 Enemy enemy;
 Player player;
