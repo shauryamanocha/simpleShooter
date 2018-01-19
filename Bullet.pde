@@ -1,3 +1,5 @@
+//this clas creates bullets for enemies, and is the super class for the player's bullets
+
 public class Bullet {
   PVector pos, vel, endPos;
   boolean paused = false;

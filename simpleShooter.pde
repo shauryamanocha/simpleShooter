@@ -1,4 +1,9 @@
 import ddf.minim.*;
+/*
+Shaurya Manocha
+simpleShooter v3.0
+January 15th - Game now has background music
+*/
 Enemy enemy;
 Player player;
 Menu menu;
@@ -51,6 +56,7 @@ void draw() {
       player.detectHit(enemies.get(i));//check if player is hit by enemy bullet
       if (enemies.get(i).dead && enemies.get(i).explosion.done()) {
         enemies.remove(i);//stop updating enemy
+        player.points++;
       }
     }
 

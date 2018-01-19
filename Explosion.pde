@@ -1,3 +1,5 @@
+//plays an explosion gif when an enemy is killed
+
 public class Explosion {
   PVector pos;
   float rate;

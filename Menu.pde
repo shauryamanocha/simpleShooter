@@ -1,3 +1,5 @@
+//this class creates a menu for the player to upgrade themself
+
 public class Menu {
   boolean pressed = false;
   int menuItems = 4;

@@ -1,3 +1,5 @@
+//this class is for the player to move and shoot enemies
+
 public class Player {
   PVector pos, vel;
   ArrayList<PlayerBullet> bullets = new ArrayList<PlayerBullet>();

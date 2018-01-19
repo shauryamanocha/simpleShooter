@@ -1,3 +1,5 @@
+//this class creates enemies that the player needs to kill
+
 public class Enemy {
   PVector pos, vel;
   int movementStage = 0;
@@ -67,7 +69,6 @@ public class Enemy {
           explosion.update(pos);
           explosion.running = true;
           dead = true;//kill self if health is too low
-          player.points++;//increase player points on hit
         }
         player.bullets.remove(i);
       }

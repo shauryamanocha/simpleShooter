@@ -1,3 +1,6 @@
+//this class creates bullets for the player
+//inherits from the bullet class with different shape and color
+
 public class PlayerBullet extends Bullet {
   public PlayerBullet(PVector _pos, int direction, float angle, float damage) {
     super(_pos, direction, angle, damage) ;
